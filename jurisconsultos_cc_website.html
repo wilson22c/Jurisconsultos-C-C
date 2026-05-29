@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jurisconsultos C & C | Asesoría Jurídica Especializada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#0d1b3e;
+--navy-light:#162654;
+--navy-mid:#1e3a6e;
+--gold:#b8973a;
+--gold-light:#d4af5a;
+--gold-pale:#f5ead6;
+--white:#ffffff;
+--off-white:#fafaf8;
+--gray-50:#f6f5f2;
+--gray-100:#ede9e0;
+--gray-200:#d4cfc4;
+--gray-400:#9a9488;
+--gray-600:#6b6560;
+--gray-800:#2e2b26;
+--shadow-sm:0 1px 4px rgba(13,27,62,0.07);
+--shadow-md:0 4px 20px rgba(13,27,62,0.10);
+--shadow-lg:0 12px 48px rgba(13,27,62,0.14);
+--shadow-xl:0 24px 80px rgba(13,27,62,0.18);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Outfit',sans-serif;color:var(--gray-800);background:var(--white);overflow-x:hidden;line-height:1.7}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.2;letter-spacing:-0.01em}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+section{padding:96px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 32px}
+.container-sm{max-width:800px;margin:0 auto;padding:0 32px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0;transition:all 0.4s ease}
+nav.scrolled{background:rgba(13,27,62,0.97);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(184,151,58,0.2)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;max-width:1400px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{height:48px;width:auto;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.3s;position:relative}
+.nav-links a:after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold-light);transition:width 0.3s}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover:after{width:100%}
+.nav-cta{background:var(--gold);color:var(--navy);padding:11px 28px;border-radius:2px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;transition:all 0.3s;border:none;cursor:pointer}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.mobile-menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.mobile-menu-btn span{display:block;width:24px;height:1.5px;background:white;transition:all 0.3s}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,#0a1628 0%,#0d1b3e 40%,#1a2f5a 70%,#142245 100%);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(184,151,58,0.06) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(30,58,110,0.4) 0%,transparent 40%);pointer-events:none}
+.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-lines:before{content:'';position:absolute;top:-20%;right:-5%;width:600px;height:600px;border:1px solid rgba(184,151,58,0.1);border-radius:50%;animation:rotateSlow 30s linear infinite}
+.hero-lines:after{content:'';position:absolute;top:-10%;right:5%;width:400px;height:400px;border:1px solid rgba(184,151,58,0.07);border-radius:50%;animation:rotateSlow 20s linear infinite reverse}
+@keyframes rotateSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 40px;padding-top:100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(184,151,58,0.12);border:1px solid rgba(184,151,58,0.25);padding:8px 18px;border-radius:24px;margin-bottom:28px;animation:fadeUp 0.8s ease both}
+.hero-badge span{color:var(--gold-light);font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.8)}}
+.hero h1{font-size:clamp(2.8rem,4.5vw,4rem);color:var(--white);font-weight:500;margin-bottom:24px;animation:fadeUp 0.8s 0.1s ease both;line-height:1.15}
+.hero h1 em{color:var(--gold-light);font-style:italic}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:44px;font-weight:300;animation:fadeUp 0.8s 0.2s ease both;max-width:520px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp 0.8s 0.3s ease both}
+.btn-primary{background:var(--gold);color:var(--navy);padding:16px 36px;border-radius:2px;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:none}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(184,151,58,0.3)}
+.btn-outline{background:transparent;color:var(--white);padding:15px 36px;border-radius:2px;font-weight:500;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.3s;display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.3)}
+.btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.6)}
+.hero-visual{animation:fadeUp 0.8s 0.4s ease both;position:relative}
+.hero-card{background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,58,0.15);border-radius:4px;padding:40px;backdrop-filter:blur(8px)}
+.hero-card-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);margin-bottom:24px;font-weight:400}
+.hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.hero-stat{background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,58,0.1);padding:20px;border-radius:2px}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:500;line-height:1}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,0.55);letter-spacing:0.05em;margin-top:6px;text-transform:uppercase}
+.hero-divider{height:1px;background:linear-gradient(90deg,rgba(184,151,58,0.3),transparent);margin:24px 0}
+.hero-practice-areas{display:flex;flex-direction:column;gap:12px}
+.hero-practice-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.7);font-size:14px}
+.hero-practice-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;animation:fadeUp 1s 0.6s ease both}
+.scroll-arrow{width:20px;height:30px;border:1px solid rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:flex-start;justify-content:center;padding-top:6px}
+.scroll-dot{width:3px;height:6px;background:var(--gold-light);border-radius:2px;animation:scrollDown 2s infinite}
+@keyframes scrollDown{0%{transform:translateY(0);opacity:1}100%{transform:translateY(8px);opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* SOBRE NOSOTROS */
+.sobre{background:var(--white)}
+.section-label{font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-label:before{content:'';display:inline-block;width:30px;height:1px;background:var(--gold)}
+.section-title{font-size:clamp(2rem,3.5vw,3rem);color:var(--navy);margin-bottom:20px;font-weight:400}
+.section-lead{font-size:1.1rem;color:var(--gray-600);line-height:1.85;max-width:600px}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.sobre-left{}
+.sobre-text{font-size:1rem;color:var(--gray-600);line-height:1.9;margin-bottom:20px}
+.sobre-right{display:flex;flex-direction:column;gap:20px}
+.sobre-card{border:1px solid var(--gray-100);padding:28px;border-radius:2px;background:var(--white);transition:all 0.3s;position:relative;overflow:hidden}
+.sobre-card:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform 0.3s;transform-origin:bottom}
+.sobre-card:hover{border-color:var(--gray-200);box-shadow:var(--shadow-md)}
+.sobre-card:hover:before{transform:scaleY(1)}
+.sobre-card-icon{font-size:28px;margin-bottom:14px}
+.sobre-card-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--navy);margin-bottom:8px;font-weight:500}
+.sobre-card-text{font-size:0.9rem;color:var(--gray-600);line-height:1.7}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;padding-top:40px;border-top:1px solid var(--gray-100)}
+.stat-item{text-align:center}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--navy);font-weight:500;line-height:1}
+.stat-suffix{color:var(--gold);font-style:italic}
+.stat-label{font-size:12px;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-top:8px}
+
+/* SERVICIOS */
+.servicios{background:var(--gray-50);position:relative;overflow:hidden}
+.servicios:before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
+.servicios-header{text-align:center;max-width:640px;margin:0 auto 64px}
+.servicios-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.servicio-card{background:var(--white);border:1px solid var(--gray-100);padding:44px;border-radius:2px;transition:all 0.4s ease;position:relative;overflow:hidden;cursor:default}
+.servicio-card:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,27,62,0.02),transparent);opacity:0;transition:opacity 0.4s}
+.servicio-card:after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transition:transform 0.4s;transform-origin:left}
+.servicio-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);border-color:var(--gray-200)}
+.servicio-card:hover:before{opacity:1}
+.servicio-card:hover:after{transform:scaleX(1)}
+.servicio-num{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--gray-100);font-weight:600;line-height:1;margin-bottom:20px;transition:color 0.3s}
+.servicio-card:hover .servicio-num{color:var(--gold-pale)}
+.servicio-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--navy);margin-bottom:10px;font-weight:500}
+.servicio-desc{font-size:0.9rem;color:var(--gray-400);margin-bottom:20px;font-style:italic}
+.servicio-list{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:8px}
+.servicio-list li{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:var(--gray-600)}
+.servicio-list li:before{content:'';display:block;width:16px;height:1px;background:var(--gold);flex-shrink:0}
+.servicio-detail{font-size:0.88rem;color:var(--gray-400);line-height:1.7;padding-top:20px;border-top:1px solid var(--gray-100)}
+
+/* BENEFICIOS */
+.beneficios{background:var(--navy)}
+.beneficios-header{text-align:center;max-width:640px;margin:0 auto 64px}
+.beneficios-header .section-label{justify-content:center;color:var(--gold-light)}
+.beneficios-header .section-label:before{background:var(--gold-light)}
+.beneficios-header .section-title{color:var(--white)}
+.beneficios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.05)}
+.beneficio-item{background:var(--navy);padding:48px 36px;transition:background 0.3s}
+.beneficio-item:hover{background:var(--navy-light)}
+.beneficio-icon{width:52px;height:52px;border:1px solid rgba(184,151,58,0.3);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:24px;border-radius:1px}
+.beneficio-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--white);margin-bottom:10px;font-weight:400}
+.beneficio-text{font-size:0.88rem;color:rgba(255,255,255,0.55);line-height:1.75}
+
+/* PROCESO */
+.proceso{background:var(--white);overflow:hidden}
+.proceso-header{text-align:center;max-width:600px;margin:0 auto 72px}
+.proceso-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proceso-timeline:before{content:'';position:absolute;top:36px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));z-index:0}
+.proceso-step{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;padding:0 16px}
+.proceso-circle{width:72px;height:72px;border-radius:50%;background:var(--white);border:1px solid var(--gray-100);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--navy);font-weight:500;box-shadow:var(--shadow-md);transition:all 0.3s;flex-shrink:0}
+.proceso-step:hover .proceso-circle{background:var(--navy);color:var(--gold-light);border-color:var(--navy);box-shadow:var(--shadow-lg)}
+.proceso-step-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--navy);margin-bottom:8px;font-weight:500}
+.proceso-step-text{font-size:0.85rem;color:var(--gray-400);line-height:1.65}
+
+/* TESTIMONIOS */
+.testimonios{background:var(--gray-50);position:relative;overflow:hidden}
+.testimonios:after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent)}
+.testimonios-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonio-card{background:var(--white);border:1px solid var(--gray-100);padding:36px;border-radius:2px;transition:all 0.3s;position:relative}
+.testimonio-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.testimonio-quote{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--gold-pale);line-height:0.5;margin-bottom:20px}
+.testimonio-text{font-size:0.95rem;color:var(--gray-600);line-height:1.8;font-style:italic;margin-bottom:24px;font-family:'Cormorant Garamond',serif}
+.testimonio-author{display:flex;align-items:center;gap:14px}
+.testimonio-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;flex-shrink:0}
+.testimonio-name{font-size:0.9rem;font-weight:600;color:var(--navy)}
+.testimonio-role{font-size:0.8rem;color:var(--gray-400)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.star{color:var(--gold);font-size:14px}
+
+/* FAQ */
+.faq{background:var(--white)}
+.faq-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:2px}
+.faq-item{border:1px solid var(--gray-100);background:var(--white)}
+.faq-question{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;cursor:pointer;transition:background 0.2s;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:500;color:var(--navy);user-select:none}
+.faq-question:hover{background:var(--gray-50)}
+.faq-icon{width:28px;height:28px;border:1px solid var(--gray-200);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.3s;color:var(--gray-600);font-size:18px;font-weight:300}
+.faq-item.open .faq-icon{background:var(--navy);border-color:var(--navy);color:var(--white);transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;font-size:0.95rem;color:var(--gray-600);line-height:1.8;padding:0 28px}
+.faq-item.open .faq-answer{max-height:300px;padding:0 28px 24px}
+
+/* CONTACTO */
+.contacto{background:var(--navy);position:relative;overflow:hidden}
+.contacto:before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border:1px solid rgba(184,151,58,0.08);border-radius:50%}
+.contacto:after{content:'';position:absolute;bottom:-80px;left:-80px;width:360px;height:360px;border:1px solid rgba(184,151,58,0.05);border-radius:50%}
+.contacto-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;position:relative;z-index:1}
+.contacto-left .section-label{color:var(--gold-light)}
+.contacto-left .section-label:before{background:var(--gold-light)}
+.contacto-left .section-title{color:var(--white)}
+.contacto-tagline{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:40px;font-weight:300}
+.contact-info-list{display:flex;flex-direction:column;gap:20px}
+.contact-info-item{display:flex;align-items:flex-start;gap:16px}
+.contact-icon{width:44px;height:44px;border:1px solid rgba(184,151,58,0.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border-radius:1px}
+.contact-info-label{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px}
+.contact-info-value{color:rgba(255,255,255,0.85);font-size:0.95rem}
+.contacto-form{background:rgba(255,255,255,0.04);border:1px solid rgba(184,151,58,0.12);padding:40px;border-radius:2px}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px}
+.form-input,.form-textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:14px 18px;border-radius:2px;font-family:'Outfit',sans-serif;font-size:0.95rem;transition:border-color 0.3s;outline:none}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.3)}
+.form-input:focus,.form-textarea:focus{border-color:rgba(184,151,58,0.4)}
+.form-textarea{resize:vertical;min-height:120px;line-height:1.6}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-gold-full{width:100%;background:var(--gold);color:var(--navy);padding:16px;border-radius:2px;font-weight:600;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;font-family:'Outfit',sans-serif;margin-top:8px}
+.btn-gold-full:hover{background:var(--gold-light);transform:translateY(-1px)}
+.whatsapp-btns{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.btn-whatsapp{display:flex;align-items:center;gap:12px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.2);color:rgba(255,255,255,0.85);padding:14px 20px;border-radius:2px;font-size:0.9rem;cursor:pointer;transition:all 0.3s;width:100%;font-family:'Outfit',sans-serif}
+.btn-whatsapp:hover{background:rgba(37,211,102,0.18);border-color:rgba(37,211,102,0.35)}
+.wa-icon{width:32px;height:32px;background:rgba(37,211,102,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+/* FOOTER */
+footer{background:#080f22;border-top:1px solid rgba(184,151,58,0.12)}
+.footer-main{padding:64px 0 40px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px}
+.footer-brand img{height:56px;filter:brightness(0) invert(1);margin-bottom:16px}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.45);font-style:italic;line-height:1.6;margin-bottom:24px}
+.social-links{display:flex;gap:12px}
+.social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:14px;transition:all 0.3s;border-radius:1px;text-decoration:none}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col-title{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:0.875rem;color:rgba(255,255,255,0.55);transition:color 0.3s}
+.footer-links a:hover{color:var(--gold-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:24px 0;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:0.8rem;color:rgba(255,255,255,0.3)}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:0.8rem;color:rgba(255,255,255,0.3);transition:color 0.3s}
+.footer-legal a:hover{color:rgba(255,255,255,0.6)}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.wa-float-btn{width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.4);transition:all 0.3s;cursor:pointer;text-decoration:none}
+.wa-float-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,0.5)}
+.wa-float-btn svg{width:28px;height:28px;fill:white}
+.wa-tooltip{background:var(--navy);color:var(--white);padding:8px 16px;border-radius:2px;font-size:13px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all 0.3s;pointer-events:none;box-shadow:var(--shadow-md);border:1px solid rgba(184,151,58,0.15)}
+.wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+.nav-links,.nav-cta{display:none}
+.mobile-menu-btn{display:flex}
+.hero-content{grid-template-columns:1fr;gap:40px;padding-top:120px}
+.hero-visual{display:none}
+.sobre-grid{grid-template-columns:1fr;gap:48px}
+.servicios-grid{grid-template-columns:1fr}
+.beneficios-grid{grid-template-columns:1fr 1fr}
+.proceso-timeline{grid-template-columns:1fr 1fr;gap:32px}
+.proceso-timeline:before{display:none}
+.testimonios-grid{grid-template-columns:1fr}
+.contacto-inner{grid-template-columns:1fr;gap:48px}
+.footer-main{grid-template-columns:1fr;gap:40px}
+.form-grid{grid-template-columns:1fr}
+.stats-row{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+section{padding:72px 0}
+.container{padding:0 20px}
+.beneficios-grid{grid-template-columns:1fr}
+.proceso-timeline{grid-template-columns:1fr}
+.hero-btns{flex-direction:column}
+.btn-primary,.btn-outline{justify-content:center}
+.footer-bottom{flex-direction:column;gap:16px;text-align:center}
+.footer-legal{flex-wrap:wrap;justify-content:center}
+.wa-float{bottom:20px;right:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+<div class="nav-inner">
+<div class="nav-logo">
+<img src="/mnt/user-data/uploads/1780084916715_image.png" alt="Jurisconsultos C&C" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div style="display:none;align-items:center;gap:8px">
+<span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:white;font-weight:500">Jurisconsultos</span>
+<span style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold-light);font-weight:500">C & C</span>
+</div>
+</div>
+<ul class="nav-links">
+<li><a href="#sobre">Nosotros</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#proceso">Proceso</a></li>
+<li><a href="#testimonios">Clientes</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+<a href="https://wa.me/573014178603" class="nav-cta">Consulta Gratis</a>
+<div class="mobile-menu-btn" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" style="display:none;position:fixed;inset:0;background:rgba(13,27,62,0.98);z-index:998;flex-direction:column;align-items:center;justify-content:center;gap:32px;">
+<ul style="list-style:none;display:flex;flex-direction:column;align-items:center;gap:28px">
+<li><a href="#sobre" style="color:white;font-size:1.3rem;font-family:'Cormorant Garamond',serif" onclick="toggleMobile()">Nosotros</a></li>
+<li><a href="#servicios" style="color:white;font-size:1.3rem;font-family:'Cormorant Garamond',serif" onclick="toggleMobile()">Servicios</a></li>
+<li><a href="#proceso" style="color:white;font-size:1.3rem;font-family:'Cormorant Garamond',serif" onclick="toggleMobile()">Proceso</a></li>
+<li><a href="#testimonios" style="color:white;font-size:1.3rem;font-family:'Cormorant Garamond',serif" onclick="toggleMobile()">Clientes</a></li>
+<li><a href="#contacto" style="color:white;font-size:1.3rem;font-family:'Cormorant Garamond',serif" onclick="toggleMobile()">Contacto</a></li>
+</ul>
+<a href="https://wa.me/573014178603" class="btn-primary">Consulta Gratis</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-pattern"></div>
+<div class="hero-lines"></div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-badge"><span class="dot"></span><span>Firma Jurídica · Medellín</span></div>
+<h1>Defendemos sus derechos con <em>compromiso</em> y experiencia.</h1>
+<p class="hero-sub">En Jurisconsultos C & C brindamos asesoría jurídica especializada y acompañamiento legal integral en asuntos de tránsito, derechos de petición, acciones constitucionales y procesos administrativos.</p>
+<div class="hero-btns">
+<a href="#contacto" class="btn-primary">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+Solicitar Asesoría
+</a>
+<a href="https://wa.me/573014178603" class="btn-outline">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+Hablar por WhatsApp
+</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-card">
+<div class="hero-card-title">Áreas de práctica</div>
+<div class="hero-stat-grid">
+<div class="hero-stat"><div class="hero-stat-num">500<span style="color:var(--gold-light);font-size:1.6rem">+</span></div><div class="hero-stat-label">Casos resueltos</div></div>
+<div class="hero-stat"><div class="hero-stat-num">8<span style="color:var(--gold-light);font-size:1.6rem">+</span></div><div class="hero-stat-label">Años de experiencia</div></div>
+<div class="hero-stat"><div class="hero-stat-num">98<span style="color:var(--gold-light);font-size:1.2rem">%</span></div><div class="hero-stat-label">Satisfacción</div></div>
+<div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Especialidades</div></div>
+</div>
+<div class="hero-divider"></div>
+<div class="hero-practice-areas">
+<div class="hero-practice-item"><span class="hero-practice-dot"></span><span>Derecho de Tránsito</span></div>
+<div class="hero-practice-item"><span class="hero-practice-dot"></span><span>Derechos de Petición</span></div>
+<div class="hero-practice-item"><span class="hero-practice-dot"></span><span>Acciones de Tutela</span></div>
+<div class="hero-practice-item"><span class="hero-practice-dot"></span><span>Procesos Contencioso Administrativos</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="hero-scroll"><div class="scroll-arrow"><div class="scroll-dot"></div></div></div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section class="sobre" id="sobre">
+<div class="container">
+<div class="sobre-grid">
+<div class="sobre-left">
+<div class="section-label">Nuestra Firma</div>
+<h2 class="section-title">Su respaldo legal confiable</h2>
+<p class="sobre-text">En Jurisconsultos C & C trabajamos con profesionalismo, ética y responsabilidad para brindar soluciones jurídicas claras y efectivas.</p>
+<p class="sobre-text">Entendemos que cada caso requiere atención personalizada, por eso acompañamos a nuestros clientes durante todo el proceso legal, garantizando orientación transparente y estrategias enfocadas en resultados.</p>
+<div class="stats-row">
+<div class="stat-item"><div class="stat-number">500<span class="stat-suffix">+</span></div><div class="stat-label">Casos atendidos</div></div>
+<div class="stat-item"><div class="stat-number">8<span class="stat-suffix">+</span></div><div class="stat-label">Años de trayectoria</div></div>
+<div class="stat-item"><div class="stat-number">98<span class="stat-suffix">%</span></div><div class="stat-label">Clientes satisfechos</div></div>
+</div>
+</div>
+<div class="sobre-right">
+<div class="sobre-card">
+<div class="sobre-card-icon">⚖️</div>
+<div class="sobre-card-title">Excelencia jurídica</div>
+<div class="sobre-card-text">Cada caso es analizado con rigor, buscando la estrategia más efectiva para proteger sus derechos e intereses.</div>
+</div>
+<div class="sobre-card">
+<div class="sobre-card-icon">🤝</div>
+<div class="sobre-card-title">Atención personalizada</div>
+<div class="sobre-card-text">No somos una firma masiva. Cada cliente recibe dedicación exclusiva y seguimiento continuo de su proceso.</div>
+</div>
+<div class="sobre-card">
+<div class="sobre-card-icon">🔒</div>
+<div class="sobre-card-title">Confidencialidad absoluta</div>
+<div class="sobre-card-text">Su información y caso son tratados con total reserva y bajo los más altos estándares éticos profesionales.</div>
+</div>
+<div class="sobre-card">
+<div class="sobre-card-icon">📋</div>
+<div class="sobre-card-title">Transparencia total</div>
+<div class="sobre-card-text">Le informamos de cada paso, cada decisión y cada avance de su proceso sin tecnicismos innecesarios.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+<div class="container">
+<div class="servicios-header">
+<div class="section-label" style="justify-content:center">Áreas de Práctica</div>
+<h2 class="section-title">Servicios jurídicos especializados</h2>
+<p style="font-size:1rem;color:var(--gray-600);line-height:1.8">Ofrecemos asesoría integral en las áreas del derecho que más afectan a los ciudadanos, con estrategias jurídicas sólidas y orientadas a resultados.</p>
+</div>
+<div class="servicios-grid">
+<div class="servicio-card">
+<div class="servicio-num">01</div>
+<div class="servicio-title">Derecho de Tránsito</div>
+<div class="servicio-desc">Protegemos sus derechos frente a procesos y sanciones de tránsito.</div>
+<ul class="servicio-list">
+<li>Comparendos y fotomultas</li>
+<li>Impugnaciones y recursos</li>
+<li>Accidentes de tránsito</li>
+<li>Recursos y apelaciones</li>
+<li>Suspensión de licencias</li>
+</ul>
+<div class="servicio-detail">Analizamos su caso detalladamente para construir una defensa jurídica sólida que proteja sus derechos y patrimonio.</div>
+</div>
+<div class="servicio-card">
+<div class="servicio-num">02</div>
+<div class="servicio-title">Derechos de Petición</div>
+<div class="servicio-desc">Exija respuestas claras y oportunas.</div>
+<ul class="servicio-list">
+<li>Entidades públicas</li>
+<li>EPS y salud</li>
+<li>Empresas privadas</li>
+<li>Instituciones gubernamentales</li>
+</ul>
+<div class="servicio-detail">Redactamos solicitudes con fundamentos legales sólidos y brindamos seguimiento profesional hasta obtener respuesta.</div>
+</div>
+<div class="servicio-card">
+<div class="servicio-num">03</div>
+<div class="servicio-title">Acciones de Tutela</div>
+<div class="servicio-desc">Protección inmediata de sus derechos fundamentales.</div>
+<ul class="servicio-list">
+<li>Derecho a la salud</li>
+<li>Derecho al trabajo</li>
+<li>Acceso a educación</li>
+<li>Mínimo vital</li>
+<li>Derechos constitucionales</li>
+</ul>
+<div class="servicio-detail">Actuamos de forma rápida y estratégica frente a vulneraciones de derechos con los mecanismos constitucionales vigentes.</div>
+</div>
+<div class="servicio-card">
+<div class="servicio-num">04</div>
+<div class="servicio-title">Procesos Contencioso Administrativos</div>
+<div class="servicio-desc">Defensa jurídica frente a entidades del Estado.</div>
+<ul class="servicio-list">
+<li>Demandas administrativas</li>
+<li>Reparación directa</li>
+<li>Nulidades</li>
+<li>Responsabilidad del Estado</li>
+</ul>
+<div class="servicio-detail">Diseñamos estrategias legales enfocadas en proteger sus intereses frente al aparato estatal con solvencia técnica.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="beneficios" id="beneficios">
+<div class="container">
+<div class="beneficios-header">
+<div class="section-label">Ventajas diferenciales</div>
+<h2 class="section-title">¿Por qué elegirnos?</h2>
+</div>
+<div class="beneficios-grid">
+<div class="beneficio-item">
+<div class="beneficio-icon">🎯</div>
+<div class="beneficio-title">Atención personalizada</div>
+<div class="beneficio-text">Cada cliente recibe dedicación exclusiva. Su caso importa y lo tratamos con la atención que merece.</div>
+</div>
+<div class="beneficio-item">
+<div class="beneficio-icon">⚡</div>
+<div class="beneficio-title">Respuesta rápida</div>
+<div class="beneficio-text">Entendemos la urgencia del derecho. Atendemos su consulta con prontitud y agilidad profesional.</div>
+</div>
+<div class="beneficio-item">
+<div class="beneficio-icon">🏆</div>
+<div class="beneficio-title">Estrategias efectivas</div>
+<div class="beneficio-text">Diseñamos la ruta jurídica más sólida basada en el análisis riguroso de su situación particular.</div>
+</div>
+<div class="beneficio-item">
+<div class="beneficio-icon">💡</div>
+<div class="beneficio-title">Transparencia jurídica</div>
+<div class="beneficio-text">Le explicamos cada paso de su proceso en términos claros y comprensibles, sin tecnicismos.</div>
+</div>
+<div class="beneficio-item">
+<div class="beneficio-icon">🤝</div>
+<div class="beneficio-title">Acompañamiento continuo</div>
+<div class="beneficio-text">Estamos con usted desde el inicio hasta la resolución final. No lo dejamos solo en ningún momento.</div>
+</div>
+<div class="beneficio-item">
+<div class="beneficio-icon">🔐</div>
+<div class="beneficio-title">Confidencialidad</div>
+<div class="beneficio-text">Su privacidad es sagrada. Manejamos toda la información bajo estrictas normas de reserva profesional.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+<div class="container">
+<div class="proceso-header">
+<div class="section-label" style="justify-content:center">Cómo trabajamos</div>
+<h2 class="section-title">Nuestro proceso de trabajo</h2>
+<p style="font-size:1rem;color:var(--gray-600);line-height:1.8">Un método probado que garantiza claridad, eficiencia y resultados en cada caso jurídico que acompañamos.</p>
+</div>
+<div class="proceso-timeline">
+<div class="proceso-step">
+<div class="proceso-circle">01</div>
+<div class="proceso-step-title">Escuchamos su caso</div>
+<div class="proceso-step-text">Realizamos una consulta inicial detallada para comprender a fondo su situación y objetivos.</div>
+</div>
+<div class="proceso-step">
+<div class="proceso-circle">02</div>
+<div class="proceso-step-title">Analizamos la situación</div>
+<div class="proceso-step-text">Estudiamos los documentos, precedentes y normativa aplicable para evaluar su caso con rigor técnico.</div>
+</div>
+<div class="proceso-step">
+<div class="proceso-circle">03</div>
+<div class="proceso-step-title">Diseñamos estrategia</div>
+<div class="proceso-step-text">Construimos la ruta jurídica más sólida y efectiva adaptada a las particularidades de su proceso.</div>
+</div>
+<div class="proceso-step">
+<div class="proceso-circle">04</div>
+<div class="proceso-step-title">Ejecutamos la defensa</div>
+<div class="proceso-step-text">Actuamos con celeridad y precisión, manteniéndole informado de cada avance hasta la resolución.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="testimonios">
+<div class="container">
+<div class="testimonios-header">
+<div class="section-label" style="justify-content:center">Clientes satisfechos</div>
+<h2 class="section-title">Lo que dicen nuestros clientes</h2>
+</div>
+<div class="testimonios-grid">
+<div class="testimonio-card">
+<div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+<div class="testimonio-quote">"</div>
+<div class="testimonio-text">Excelente servicio. Me ayudaron con un comparendo injusto y lo resolvieron de manera rápida y profesional. Siempre estuvieron disponibles para resolver mis dudas.</div>
+<div class="testimonio-author">
+<div class="testimonio-avatar">CM</div>
+<div><div class="testimonio-name">Carlos Mejía</div><div class="testimonio-role">Cliente — Derecho de Tránsito</div></div>
+</div>
+</div>
+<div class="testimonio-card">
+<div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+<div class="testimonio-quote">"</div>
+<div class="testimonio-text">Gracias a su acción de tutela pude acceder al tratamiento médico que necesitaba con urgencia. Un equipo comprometido y verdaderamente humano.</div>
+<div class="testimonio-author">
+<div class="testimonio-avatar">AR</div>
+<div><div class="testimonio-name">Andrea Restrepo</div><div class="testimonio-role">Cliente — Acción de Tutela</div></div>
+</div>
+</div>
+<div class="testimonio-card">
+<div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+<div class="testimonio-quote">"</div>
+<div class="testimonio-text">Presentaron mi derecho de petición ante la entidad y obtuvieron respuesta en tiempo récord. Trabajo impecable, transparente y con resultados concretos.</div>
+<div class="testimonio-author">
+<div class="testimonio-avatar">JL</div>
+<div><div class="testimonio-name">Jorge Luis Torres</div><div class="testimonio-role">Cliente — Derecho de Petición</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+<div class="container">
+<div class="faq-header">
+<div class="section-label" style="justify-content:center">Preguntas frecuentes</div>
+<h2 class="section-title" style="text-align:center">Resolvemos sus dudas</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Cómo puedo agendar una consulta inicial?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Puede contactarnos vía WhatsApp al +57 301 417 8603 o al +57 324 551 6930, o través del formulario en esta página. Le responderemos a la brevedad para agendar su consulta personalizada.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Cuánto tiempo tarda una acción de tutela?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Legalmente el juez tiene 10 días calendario para fallar. Sin embargo, la resolución puede variar según el caso. Nos aseguramos de presentarla con todos los argumentos necesarios para obtener el mejor resultado posible.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Puedo impugnar una fotomulta o comparendo?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Sí. Existen recursos legales para impugnar sanciones de tránsito. El plazo y el procedimiento dependen del tipo de infracción. Le recomendamos consultar con nosotros lo antes posible para evaluar su caso y actuar dentro de los términos legales.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Qué documentos necesito llevar a la consulta?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Depende del tipo de caso, pero en general: documentos de identidad, notificaciones o resoluciones recibidas, comunicaciones previas con entidades, y cualquier evidencia relacionada con su situación. Le orientamos con detalle al momento de agendar.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Trabajan solo en Medellín o también fuera?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Nuestra sede está en Medellín, Antioquia. Sin embargo, en muchos casos podemos asesorarle de forma remota para trámites administrativos y redacción de documentos jurídicos. Consulte su caso específico con nosotros.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)"><span>¿Cómo se manejan los honorarios?</span><div class="faq-icon">+</div></div>
+<div class="faq-answer">Los honorarios varían según el tipo y complejidad del caso. En la consulta inicial le presentamos una propuesta clara y transparente. Nos comprometemos con la honestidad en cada aspecto de nuestra relación profesional.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+<div class="container">
+<div class="contacto-inner">
+<div class="contacto-left">
+<div class="section-label">Contáctenos</div>
+<h2 class="section-title">Solicite hoy su asesoría jurídica</h2>
+<p class="contacto-tagline">Reciba atención profesional personalizada y demos el primer paso juntos hacia la solución que necesita.</p>
+<div class="contact-info-list">
+<div class="contact-info-item">
+<div class="contact-icon">📞</div>
+<div><div class="contact-info-label">Teléfono principal</div><div class="contact-info-value">+57 301 417 8603</div></div>
+</div>
+<div class="contact-info-item">
+<div class="contact-icon">📱</div>
+<div><div class="contact-info-label">Teléfono secundario</div><div class="contact-info-value">+57 324 551 6930</div></div>
+</div>
+<div class="contact-info-item">
+<div class="contact-icon">📍</div>
+<div><div class="contact-info-label">Ubicación</div><div class="contact-info-value">Medellín, Antioquia, Colombia</div></div>
+</div>
+</div>
+<div class="whatsapp-btns">
+<a href="https://wa.me/573014178603" class="btn-whatsapp"><div class="wa-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div><div><div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:2px">WhatsApp</div>+57 301 417 8603</div></a>
+<a href="https://wa.me/573245516930" class="btn-whatsapp"><div class="wa-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg></div><div><div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:2px">WhatsApp</div>+57 324 551 6930</div></a>
+</div>
+</div>
+<div class="contacto-form">
+<div class="form-grid">
+<div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" placeholder="Su nombre completo"></div>
+<div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" type="tel" placeholder="+57 300 000 0000"></div>
+</div>
+<div class="form-group"><label class="form-label">Correo electrónico</label><input class="form-input" type="email" placeholder="correo@ejemplo.com"></div>
+<div class="form-group"><label class="form-label">Área de consulta</label>
+<select class="form-input" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);cursor:pointer">
+<option value="" style="background:#0d1b3e">Seleccione un área...</option>
+<option value="transito" style="background:#0d1b3e">Derecho de Tránsito</option>
+<option value="peticion" style="background:#0d1b3e">Derechos de Petición</option>
+<option value="tutela" style="background:#0d1b3e">Acción de Tutela</option>
+<option value="contencioso" style="background:#0d1b3e">Proceso Contencioso Administrativo</option>
+<option value="otro" style="background:#0d1b3e">Otro</option>
+</select>
+</div>
+<div class="form-group"><label class="form-label">Descripción del caso</label><textarea class="form-textarea" placeholder="Describa brevemente su situación jurídica..."></textarea></div>
+<button class="btn-gold-full" onclick="handleSubmit()">Enviar solicitud de asesoría →</button>
+<p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:12px">Su información es confidencial y está protegida bajo nuestra política de privacidad.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-main">
+<div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<img src="/mnt/user-data/uploads/1780084916715_image.png" alt="Jurisconsultos C&C" style="height:50px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+</div>
+<p class="footer-tagline">Asesoría jurídica especializada con compromiso, ética y resultados comprobados en Medellín y Antioquia.</p>
+<div class="social-links">
+<a href="#" class="social-link" aria-label="Facebook">f</a>
+<a href="#" class="social-link" aria-label="Instagram">in</a>
+<a href="https://wa.me/573014178603" class="social-link" aria-label="WhatsApp">wa</a>
+</div>
+</div>
+<div>
+<div class="footer-col-title">Servicios</div>
+<ul class="footer-links">
+<li><a href="#servicios">Derecho de Tránsito</a></li>
+<li><a href="#servicios">Derechos de Petición</a></li>
+<li><a href="#servicios">Acciones de Tutela</a></li>
+<li><a href="#servicios">Proceso Contencioso</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Contacto</div>
+<ul class="footer-links">
+<li><a href="tel:+573014178603">+57 301 417 8603</a></li>
+<li><a href="tel:+573245516930">+57 324 551 6930</a></li>
+<li><a href="#">Medellín, Antioquia</a></li>
+<li><a href="https://wa.me/573014178603">WhatsApp Directo</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy">© 2024 Jurisconsultos C & C. Todos los derechos reservados.</div>
+<div class="footer-legal">
+<a href="#">Política de Privacidad</a>
+<a href="#">Términos y Condiciones</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+<div class="wa-tooltip">Chatea con nosotros</div>
+<a href="https://wa.me/573014178603" class="wa-float-btn" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+</div>
+
+<script>
+function toggleMobile(){var m=document.getElementById('mobileMenu');m.style.display=m.style.display==='flex'?'none':'flex'}
+window.addEventListener('scroll',function(){var n=document.getElementById('mainNav');n.classList.toggle('scrolled',window.scrollY>50)});
+document.getElementById('mainNav').classList.add('scrolled');
+function toggleFaq(el){var item=el.parentElement;var wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open')});if(!wasOpen)item.classList.add('open')}
+function handleSubmit(){alert('¡Gracias por su mensaje! Nos comunicaremos con usted a la brevedad. También puede contactarnos directamente por WhatsApp.')}
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:0.1});
+document.querySelectorAll('.servicio-card,.sobre-card,.beneficio-item,.proceso-step,.testimonio-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';observer.observe(el)});
+</script>
+</body>
+</html>
